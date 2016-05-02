@@ -84,3 +84,4 @@ You can change your Caffe's include and lib path in CMakeLists.txt.
 	
 	`set(CAFFE_LINK_LIBRARAY caffe/lib)`
 
+# ros_caffe
