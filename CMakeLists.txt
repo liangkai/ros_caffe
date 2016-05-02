@@ -15,6 +15,7 @@ set(CAFFE_LINK_LIBRARAY caffe/build/lib)
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system)
 find_package(OpenCV REQUIRED)
+find_package(CUDA REQUIRED)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -166,5 +167,13 @@ include_directories(${CAFFE_INCLUDEDIR})
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 link_directories(${CAFFE_LINK_LIBRARAY})
+
 add_executable(ros_caffe_test src/ros_caffe_test.cpp)
+add_executable(classify_camera src/classify_camera.cpp)
+add_executable(image_caffe_test src/image_caffe_test.cpp)
+add_executable(face_identifier_camera src/face_identifier_camera.cpp)
+
 target_link_libraries(ros_caffe_test ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} caffe glog)
+target_link_libraries(classify_camera ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} caffe glog)
+target_link_libraries(image_caffe_test ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} caffe glog)
+target_link_libraries(face_identifier_camera ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} caffe glog)
