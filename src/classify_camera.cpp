@@ -54,10 +54,10 @@ int main(int argc, char **argv) {
         gPublisher = nh.advertise<std_msgs::String>(PUBLISH_RET_TOPIC_NAME, 100);
 
     const std::string ROOT_SAMPLE = ros::package::getPath("ros_caffe");
-    model_path = ROOT_SAMPLE + "/data/deploy.prototxt";
-    weights_path = ROOT_SAMPLE + "/data/bvlc_reference_caffenet.caffemodel";
-    mean_file = ROOT_SAMPLE + "/data/imagenet_mean.binaryproto";
-    label_file = ROOT_SAMPLE + "/data/synset_words.txt";
+    model_path = ROOT_SAMPLE + "/models/bvlc_reference_caffenet/deploy.prototxt";
+    weights_path = ROOT_SAMPLE + "/models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel";
+    mean_file = ROOT_SAMPLE + "/models/bvlc_reference_caffenet/imagenet_mean.binaryproto";
+    label_file = ROOT_SAMPLE + "/models/bvlc_reference_caffenet/synset_words.txt";
 
     classifier = new Classifier(model_path, weights_path, mean_file, label_file);
 

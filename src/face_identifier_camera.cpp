@@ -5,7 +5,7 @@
 #include <cv_bridge/cv_bridge.h>
 #include "Classifier.h"
 
-const std::string RECEIVE_IMG_TOPIC_NAME = "/face_detection_GPU"; //"camera/rgb/image_raw";
+const std::string RECEIVE_IMG_TOPIC_NAME = "/face_detection_optimized"; //"camera/rgb/image_raw";
 const std::string PUBLISH_RET_TOPIC_NAME = "/caffe_ret";
 
 Classifier* classifier;
@@ -54,10 +54,10 @@ int main(int argc, char **argv) {
         gPublisher = nh.advertise<std_msgs::String>(PUBLISH_RET_TOPIC_NAME, 100);
 
     const std::string ROOT_SAMPLE = ros::package::getPath("ros_caffe");
-    model_path = ROOT_SAMPLE + "/caffe/models/face_identifier/deploy.prototxt";
-    weights_path = ROOT_SAMPLE + "/caffe/models/face_identifier/snapshot_iter_168.caffemodel";
-    mean_file = ROOT_SAMPLE + "/caffe/models/face_identifier/mean.binaryproto";
-    label_file = ROOT_SAMPLE + "/caffe/models/face_identifier/labels.txt";
+    model_path = ROOT_SAMPLE + "/models/face_identifier_model/deploy.prototxt";
+    weights_path = ROOT_SAMPLE + "/models/face_identifier_model/snapshot_iter_168.caffemodel";
+    mean_file = ROOT_SAMPLE + "/models/face_identifier_model/mean.binaryproto";
+    label_file = ROOT_SAMPLE + "/models/face_identifier_model/labels.txt";
 
     classifier = new Classifier(model_path, weights_path, mean_file, label_file);
 
